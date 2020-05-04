@@ -36,17 +36,23 @@ Texture::~Texture()
 }
 
 void Texture::Bind(GLuint slot, GLuint shader) {
-	
+
 	GLuint dsa = GL_TEXTURE0 + slot;
 	glActiveTexture(dsa);
 	//glTextureParameteri
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	
+
 	const char* name = shaderTextureName.c_str();
 	GLint ShaderUniform = glGetUniformLocation(shader, name);
-	if (ShaderUniform == -1) exit(-10);
+	if (ShaderUniform == -1) {
+		GLenum err;
+		while ((err = glGetError()) != GL_NO_ERROR) {
+			std::cout << err;
+		}
+//		exit(-10);
+	}
 	glUniform1i(ShaderUniform, slot);
-	
+
 
 
 	//glBindTexture(GL_TEXTURE_2D, uniformLocation);

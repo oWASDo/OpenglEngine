@@ -8,13 +8,12 @@ layout(location = 2) in vec2 uv;
 out float lambert;
 out vec2 uvs;
 out vec3 Light;
-uniform vec3 Col;
 
 
 void main() {
 
 	uvs = uv;
-	vec3 light_vector = vec3(0, 0, 1);
+	vec3 light_vector = vec3(0, 3, 2);
 	Light = light_vector;
 	lambert = dot(norm, light_vector);
 	float x = position.x;
@@ -48,18 +47,15 @@ in vec2 uvs;
 
 in vec3 Light;
 uniform sampler2D TextureAlbedo;
-//uniform sampler2D TextureNorm;
+uniform vec3 Col;
 
 
 void main() {
 
 	vec4 outColor;
-
 		outColor = texture(TextureAlbedo, uvs);
-		//outColor1 = texture(TextureNorm, uvs);
 		//float lambImage = dot(normal.xyz, Light);
-		//outColor *= lambImage;
-
+		outColor *= lambert;
 
 	color = outColor;
 }

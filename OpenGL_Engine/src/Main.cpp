@@ -46,7 +46,7 @@ int main(void) {
 	
 	Texture texts[1]{
 		Texture("Content/Image/MCG_diff.jpg", "TextureAlbedo"),
-	//	Texture("Content/Image/MCG_norm.jpg", "TextureNorm")
+		//Texture("Content/Image/MCG_norm.jpg", "TextureNorm",2)
 
 	};
 
