@@ -158,6 +158,7 @@
     <ClInclude Include="header\FBXParser.h" />
     <ClInclude Include="header\FileReader.h" />
     <ClInclude Include="header\GraphicHeader.h" />
+    <ClInclude Include="header\LightSystem.h" />
     <ClInclude Include="header\Material.h" />
     <ClInclude Include="header\Shader.h" />
     <ClInclude Include="header\ShaderList.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="header\Texture.h" />
     <ClInclude Include="header\Uniform.h" />
     <ClInclude Include="header\Utils.h" />
+    <ClInclude Include="header\Vector.h" />
     <ClInclude Include="header\Window.h" />
   </ItemGroup>
   <ItemGroup>

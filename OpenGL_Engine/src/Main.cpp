@@ -11,14 +11,16 @@
 #include "Utils.h"
 #include "FBXParser.h"
 #include "Uniform.h"
-
-
+#include "LightSystem.h"
+#include "Vector.h"
 
 //while (GLenum error = glGetError())
 //{
 //	std::cout << "error (" << error << ")" << std::endl;
 //}
 int main(void) {
+
+
 
 	vector<float> pos;
 	vector<float> norm;
@@ -43,16 +45,23 @@ int main(void) {
 	UniformElement uniArr[1]{
 		{"Col",3,UnifromType::Float}
 	};
-	
+
 	Texture texts[1]{
 		Texture("Content/Image/MCG_diff.jpg", "TextureAlbedo"),
 		//Texture("Content/Image/MCG_norm.jpg", "TextureNorm",2)
 
 	};
 
-	Material* material = new Material("Content/Shader/BasicShader.glsl", buffers, 3, texts, 1, uniArr, 1);//, index.data(), index.size());
-	
+	Material* material = new Material("Content/Shader/BasicShader.glsl", buffers, 3, texts, 1, uniArr, 0);//, index.data(), index.size());
+
 	material->Use();
+
+
+	LightSystem lights = LightSystem();
+	lights.AddDirectLight(1, Vector(0.9, 0, 0.3));
+	lights.AddDirectLight(1, Vector(0, 0.8, -0.6));
+	//lights.AddDirectLight(1, Vector(0 ,0.0f, 1));
+	lights.UpdateBuffer();
 
 
 	//Texture texts2[1]{
@@ -119,9 +128,10 @@ int main(void) {
 	{
 		/* Render here */
 		engine->ClearScreen();
+		//lights.UpdateBuffer();
 
 		//glDrawArrays(GL_TRIANGLES, 0, 9);
-		material->ChangeUniformFloatFromName("Col", 0, 1, 0);
+		//material->ChangeUniformFloatFromName("Col", 0, 1, 0);
 		//material2->ChangeUniformFloatFromName("Col", 1, 1, 0);
 
 		//material->UseAndDraw();
