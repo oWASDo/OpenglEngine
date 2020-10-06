@@ -59,7 +59,7 @@ int main(void) {
 
 	LightSystem lights = LightSystem();
 	lights.AddDirectLight(1, Vector(0.0f, 1.0f, 0.0f));
-	lights.AddDirectLight(1, Vector(1.0f, 0.0f, -0.0f));
+	lights.AddDirectLight(1, Vector(0.0f, 0.0f, 1.0f));
 	//lights.AddDirectLight(1, Vector(0 ,0.0f, 1));
 	lights.UpdateBuffer();
 
